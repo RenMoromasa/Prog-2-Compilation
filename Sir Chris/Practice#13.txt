@@ -1,0 +1,7 @@
+Write the code for the function retrieveCharIndices. The funtion will receive a string, and a character to search. The function will go through each element in the string, and return a new array containing the indices where the character is found. Let the last index of the returned array contain a -1 as the sentinel value.
+
+Input: Str = "HELLO WORLD", Search = 'L';
+Output: Indices = {2, 3, 9, -1};
+
+Input: Str = "ONOMATOPOEIA", Search = 'O';
+Output: Indices = {0, 2, 6, 8, -1};

@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAXPRODS 100
+
+int shelfNumber;
+
+typedef struct{
+	int month;
+	int day;
+	int year;
+}date;
+
+typedef struct{
+	char prodID[9];
+	char prodName[32];
+	float price;
+	int stock;
+	date expiryDate;
+}productType;
+
+typedef struct{
+	productType prods[MAXPRODS];
+	int numProds;
+}prodListType,*prodList;
+
+typedef struct{
+	int shelfID;
+	prodList PL;
+}shelfType;
+
+void initProdList(prodList* P)
+{
+	*P = malloc(sizeof(prodListType));
+	if(*P != NULL){
+		(*P)->numProds = 0;
+	}
+}
+
+void initShelf(shelfType* S)
+{
+	S->shelfID = shelfNumber++;
+	initProdList(&S->PL);
+}
+
+void populateShelves(shelfType S[])
+{
+	int i;
+	productType products[50] = {
+        {"P001", "Red Apples", 2.99, 150, {12, 15, 2024}},
+        {"P002", "Whole Milk", 1.89, 200, {11, 30, 2024}},
+        {"P003", "Bananas", 1.49, 120, {12, 10, 2024}},
+        {"P004", "Eggs (12 pack)", 3.29, 180, {12, 5, 2024}},
+        {"P005", "Whole Wheat Bread", 2.49, 50, {11, 25, 2024}},
+        {"P006", "Chicken Breast", 5.99, 100, {11, 18, 2024}},
+        {"P007", "Orange Juice", 3.99, 75, {11, 22, 2024}},
+        {"P008", "Corn Flakes Cereal", 4.29, 90, {12, 1, 2024}},
+        {"P009", "Peanut Butter", 3.79, 60, {12, 10, 2025}},
+        {"P010", "White Rice (5kg)", 8.99, 200, {12, 31, 2024}},
+        {"P011", "Greek Yogurt", 1.29, 250, {11, 18, 2024}},
+        {"P012", "Unsalted Butter", 4.49, 140, {11, 15, 2024}},
+        {"P013", "Fresh Spinach", 2.99, 80, {11, 28, 2024}},
+        {"P014", "Tomato Sauce", 2.29, 60, {12, 15, 2025}},
+        {"P015", "Applesauce", 1.99, 120, {12, 10, 2025}},
+        {"P016", "Cheddar Cheese", 5.49, 90, {11, 22, 2024}},
+        {"P017", "Vanilla Ice Cream", 3.59, 50, {12, 1, 2024}},
+        {"P018", "Fresh Broccoli", 2.49, 60, {11, 23, 2024}},
+        {"P019", "Spaghetti Pasta", 1.89, 200, {12, 15, 2025}},
+        {"P020", "Ground Coffee", 6.99, 40, {12, 1, 2024}},
+        {"P021", "Cola Soda", 1.49, 180, {12, 31, 2024}},
+        {"P022", "Toilet Paper (12 pack)", 6.99, 300, {12, 31, 2025}},
+        {"P023", "Russet Potatoes", 3.99, 150, {12, 10, 2024}},
+        {"P024", "Carrots", 1.99, 180, {12, 5, 2024}},
+        {"P025", "Iceberg Lettuce", 1.49, 200, {11, 20, 2024}},
+        {"P026", "Frozen Peas", 2.69, 100, {12, 30, 2025}},
+        {"P027", "Tomato Ketchup", 2.49, 250, {12, 15, 2025}},
+        {"P028", "Yellow Mustard", 1.69, 220, {12, 15, 2025}},
+        {"P029", "Chicken Nuggets", 4.99, 150, {12, 10, 2024}},
+        {"P030", "Bacon", 5.99, 80, {11, 25, 2024}},
+        {"P031", "Shampoo (250ml)", 4.19, 100, {12, 31, 2025}},
+        {"P032", "Conditioner (250ml)", 4.19, 120, {12, 31, 2025}},
+        {"P033", "Dish Soap", 2.49, 180, {12, 31, 2024}},
+        {"P034", "Paper Towels (6 roll)", 3.99, 200, {12, 31, 2025}},
+        {"P035", "Frozen Pizza", 7.49, 70, {12, 10, 2024}},
+        {"P036", "Granola Bars", 4.19, 120, {12, 5, 2024}},
+        {"P037", "Potato Chips", 2.99, 150, {12, 15, 2024}},
+        {"P038", "Hot Sauce", 1.79, 180, {12, 31, 2024}},
+        {"P039", "Frozen French Fries", 3.29, 90, {12, 31, 2025}},
+        {"P040", "Black Pepper", 3.49, 60, {12, 10, 2024}},
+        {"P041", "Instant Oatmeal", 2.49, 200, {12, 31, 2024}},
+        {"P042", "Canned Beans", 1.49, 250, {12, 15, 2025}},
+        {"P043", "Canned Tuna", 1.79, 300, {12, 10, 2025}},
+        {"P044", "All-purpose Flour", 4.99, 100, {12, 1, 2024}},
+        {"P045", "Granulated Sugar", 3.59, 150, {12, 5, 2025}},
+        {"P046", "Spaghetti Sauce", 2.19, 180, {12, 15, 2025}},
+        {"P047", "Ranch Dressing", 2.69, 100, {12, 1, 2024}},
+        {"P048", "Mayonnaise", 3.49, 80, {12, 10, 2024}},
+        {"P049", "Frozen Mixed Vegetables", 3.19, 120, {12, 31, 2024}},
+        {"P050", "Saltine Crackers", 2.09, 200, {12, 31, 2025}}
+    };
+	
+	for(i = 0; i < 50; i++){
+		initShelf(S);
+		insertProduct(S, products[i]);
+	}
+}
+
+/* Write the code for insertProduct. The function will check the Product Name, and insert it into it's proper shelf.
+   The product should be inserted into the shelf that contains the number of it's first letter. A Product starting with A
+   will be inserted in Shelf 0. A product starting with C will be inserted in Shelf 2 and so on. Order Products 
+   in ascending order by their ID.
+*/
+
+void insertProduct(shelfType S[],productType P)
+{
+
+}
+
+int main(void)
+{
+	shelfType pureGold[26];
+	
+	return 0;
+}

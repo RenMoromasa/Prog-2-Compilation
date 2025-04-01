@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int* deleteAllMultiples(int A[], int* count, int mult)
+{
+    int i, j;
+    int temp[*count];
+    int* deleted;
+    
+    for(i = j = 0; i < *count;){
+        if(A[i] % 4 == 0){
+            temp[j] = A[i];
+            j++;
+            
+            (*count)--;
+            memcpy(A+i, A+i+1, sizeof(int) * ((*count)-i));
+        }else{
+            i++;
+        }
+    }
+    
+    deleted = malloc(sizeof(int) * (j+1));
+    if(deleted != NULL){
+        memcpy(deleted, temp, sizeof(int) * j);
+    }
+    deleted[j] = -1;
+    
+    return deleted;
+}
+
+void insertSorted(int A[], int size, int* count, int data)
+{
+    int i;
+    if(*count < size){
+        //Step 1: Look for the proper place to insert.
+        for(i = 0; i < *count && A[i] < data; i++){}
+        
+        //Step 2: Shift elements down.
+        memcpy(A+i+1, A+i, sizeof(int) * ((*count) - i));
+        
+        //Step 3: Insert the element.
+        A[i] = data;
+        
+        //Step 4: Increment the count.
+        (*count)++;
+    }
+}
+
+void updateElem(int A[], int count, int elem, int newElem)
+{
+    int i;
+    
+    //Step 1: Search for loop to find elem.
+    for(i = 0; i < count && A[i] != elem; i++){}
+    if(i < count){
+        //Step 2: Update the elem.
+        A[i] = newElem;
+    }
+}
+
+void printArray(int A[], int size)
+{
+    int i;
+    
+    for(i = 0; i < size; i++){
+        printf("%d ", A[i]);
+    }
+}
+
+void printArrayDeleted(int A[])
+{
+    int i;
+    
+    for(i = 0; A[i] != -1; i++){
+        printf("%d ", A[i]);
+    }
+}
+
+int main(void)
+{
+    int array[10] = {1, 2, 6, 8, 12, 14};
+    int count = 6;
+    int size = sizeof(array) / sizeof(int);
+    //int* delMults = deleteAllMultiples(array, &count, 4);
+    //printArrayDeleted(delMults);
+    insertSorted(array, size, &count, 7);
+    updateElem(array, count, 8, 9);
+    printArray(array, count);
+    
+    return 0;
+}

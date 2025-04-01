@@ -1,0 +1,9 @@
+Practice Activity:
+
+Write the code for the function deleteAllMultiples(). The function will receive an array of integers, its size, and a multiple M as parameters. The function will iterate through the array and delete all elements where A[i] is a multiple of M. Return all deleted multiples to the calling function. At the end of the array to return, add an additional element with the value -1 to serve as a sentinel, marking the end of the deleted elements.
+
+Example
+Input: {1, 2, 6, 8, 12, 14}, Multiple: 4
+Output:
+    •    Original Array: {1, 2, 6, 14}
+    •    Deleted: {8, 12, -1}

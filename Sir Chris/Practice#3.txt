@@ -1,0 +1,23 @@
+@all Let's build programming confidence!
+
+Your daily basic programming challenges for today are:
+
+1. Write the code for the function reverseDisplay. The function will receive an array of integers and its size, and will print the reverse of the values in the array.
+
+Input: A[5] = {2, 4, 6, 8, 10};
+Output: 10, 8, 6, 4, 2
+
+2. Write the code for the function arrayMultiples. The function will receive 3 arrays, A, B, and C, and the size of all 3. It is assumed that each array will be of the same size. The function will go through each element in array A, and compare it with it's corresponding index in array B. If B[i] is a multiple of A[i], then store a number 1 in C[i]. Otherwise, store a 0 in C[i]. Display the contents of array C in the calling function (most likely main()).
+
+Note: B[i] is considered a multiple of A[i] if it can be perfectly divided by A[i] (meaning, no remainders). For example: 44 is a multiple of 4, because 44 is perfectly divisible by 4 (44/4 = 11).
+
+Input:
+A[5] = {2, 3, 4, 5, 6};
+B[5] = {10, 11, 44, 105, 43};
+C[5];
+size = 5;
+
+Output:
+C[5] = {1, 0, 1, 1, 0};
+
+Feel free to ask for help if you need it!

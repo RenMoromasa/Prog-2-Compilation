@@ -1,0 +1,7 @@
+Write the code for the function deleteFirstInstance(). The function will receive an array of integers, a pointer to the count (actual number of elements in the array), and an integer value to delete. The function will go through the array, and delete the first instance of integer value in the array.
+
+Input: A[10] = {1, 2, 3, 4, 6}; Value to Delete: 3
+Output: A[10] = {1, 2, 4, 6}; //3 was deleted from the original array.
+
+Input: A[10] = {1, 6, 3, 4, 6}; Value to Delete: 6
+Output: A[10] = {1, 3, 4, 6}; //The first 6 was deleted from the original array.

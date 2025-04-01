@@ -1,0 +1,52 @@
+Problem 1: (2 mins and 45 secs read)
+Sorting Souls
+“I only accept those who are deemed the best! You take him Pessimi.”
+“No can do big bro. I only want the worst! He’s all your Mediocris.”
+“Do I even have a choice at this point?”
+You wake up to the sound of 3 bickering deities. To the left is a tall handsome figure, so refined and magnificent that calling him perfect would be an understatement. To the right was a frail, and skinny boy, who looked as if even the tiniest breeze would knock him over. Finally, in the middle was an average looking teenager, who probably looked like one of those guys you meet at high school but never remember.
+“Hush now brothers. He has finally awoken.” said the deity to your left.
+“My name is Optimum. These are my brothers Pessimi and Mediocris. And together, we decide where lost souls go after death, based on how they’ve lived their lives. Based on your “score”, you’ll be going with Mediocris. Any questions? Too bad, we have more souls to judge. Come Pessimi. Let’s leave them to it.”
+A loud bang and a flash of light later, you are left in the room with Mr. Average Looking guy. 
+“Hi. I know you have many questions but save that for later. We have some work to do. You see, I am the Middle Deity, Mediocris. Any souls that my brothers won’t take are placed under my care. I can’t get the best, nor the worst, so I usually settle for the second best. I do cheat sometimes. But more on that later. For now, come and follow me. We have some work to do.”
+You follow him to a room full of people lining up. “More lost souls huh?”, you say to yourself. You notice that on top of every person’s head, there is a number, sometimes positive, sometimes negative, sometimes even zero.
+“I see you’ve noticed the “score”. Great. This makes it easier. When a soul reaches this place, the universe gives them a numerical value to signify how good or bad they were in life. It’s our job to sort them out. Sometimes souls have the same scores, so I usually just take the FIRST 2nd best, and all other souls behind them in line. It just makes things easier for me. Care to give me a hand?”
+“Sure. Why not. It’s not like I have anything better to do. Let’s get to work.” 
+
+Test Case #1
+Input: [8,1,3,6,5,0]
+Expected Output: [6,5,0] 
+Test Case #2
+Input: [-4,32,95,11,39,85,12]
+Expected Output: [85,12]
+
+Test Case #3
+Input: [11,11,48,12,33,4,12,38,12,38,11]
+Expected Output: [38,12,38,11]
+ 
+Test Case #4
+Input: [0,48,92,29,30,12,60]
+Expected Output: [60]
+ 
+Test Case #5
+Input: [4]
+Output: [4]
+ 
+Test Case #6
+Input: [45,43]
+Output: [43]
+ 
+Test Case #7
+Input: [59,21,54]
+Ouptput: [54]
+ 
+Test Case #8
+Input: [0, -42,-1]
+Ouptut: [-1]
+ 
+Test Case #9
+Input: [0,0,0,0,1,1,1,1,1,1,1,1,1,2]
+Ouptut: [1,1,1,1,1,1,1,1,1,2]
+ 
+Test Case #10
+Input: [2,1,3,2,1,3,2]
+Ouptut: [2,1,3,2,1,3,2]

@@ -1,0 +1,22 @@
+void displayProdList(prodList P)
+{
+    int i;
+    if(P->numProds > 0){
+        printf("%-10s %-30s %10s\n", "PROD ID", "PROD NAME", "STOCKS");
+        for(i = 0; i < P->numProds; i++){
+            printf("%-10s %-30s %10d\n", P->prods[i].prodID, P->prods[i].prodName, P->prods[i].stock);
+        }
+    }else{
+        printf("SHELF IS EMPTY\n");
+    }
+}
+
+void displayShelves(shelfType S[])
+{
+    int i = 0;
+    
+    for(i = 0; i < 26; i++){
+        printf("\nSHELF[%c]\n", i+65);
+        displayProdList(S[i].PL);
+    }
+}

@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+
+//User defined data types
+typedef struct{
+    //Members
+    int month;
+    int date;
+    int year;
+}bday;
+
+typedef struct{
+    char fName[32];
+    char mi;
+    char lName[64];
+}name;
+
+typedef struct{
+    float midtermGrade;
+    float finalGrade;
+}grades;
+
+typedef struct{
+    char idNum[9];
+    name studName;
+    bday dob;
+    char gender;
+    grades studGrades;
+    float allowancePerWeek;    
+}studRec;
+
+void printStudRec(studRec* stud2)
+{
+    strcpy(stud2->studName.fName, "Mark");
+    
+    printf("ID: %s\nName: %s %c. %s\nBirthday: %d %d %d\nGender: %c\nGrades: %.1f %.1f\nAllowance: %.2f\n",
+    stud2->idNum, stud2->studName.fName, stud2->studName.mi, stud2->studName.lName, stud2->dob.month,
+    stud2->dob.date, stud2->dob.year, stud2->gender, stud2->studGrades.midtermGrade, stud2->studGrades.finalGrade,
+    stud2->allowancePerWeek);
+}
+
+int main(void)
+{
+    studRec stud1;
+    strcpy(stud1.studName.fName, "Neah");
+    stud1.studGrades.finalGrade = 1.0;
+    stud1.allowancePerWeek = 10000;
+    puts(stud1.studName.fName);
+    
+    studRec stud2 = {"22104852", {"Monicah", 'D', "Advincula"}, 
+                     {9, 14, 2004}, 'F', {2.5, 1.7}, 100000.00
+                    };
+    puts(stud2.studName.fName);
+    printStudRec(&stud2);
+    puts(stud2.studName.fName);
+    
+    studRec stud3;
+    stud3 = stud2;
+
+    puts(stud3.idNum);
+    
+    return 0;
+}

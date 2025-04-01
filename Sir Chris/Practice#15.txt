@@ -1,0 +1,33 @@
+//This problem was created by Cris Militante for CSIT1201 Second Semester AY 2019-2020
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct ProductDetails{
+    char prodID[9];
+    char prodName[32];
+    char shelf[5];
+}ProductDetails;
+
+typedef struct Product{
+    ProductDetails details;
+    float price;
+    int stocks;
+    int itemsSold;
+}Product;
+
+void clear()
+{
+    puts("PRESS ANY KEY TO CONTINUE...");
+    getch();
+    system("CLS");
+}
+
+void displayProduct(Product prod)
+{
+    char buffer[300];
+    sprintf(buffer, "ID: %s\nName: %s\nPrice: %.2f\nShelf: %s\nStocks: %d\nItems Sold: %d\n\n", 
+    prod.details.prodID, prod.details.prodName, prod.price, prod.details.shelf, 
+    prod.stocks, prod.itemsSold);
+    puts(buffer);
+}

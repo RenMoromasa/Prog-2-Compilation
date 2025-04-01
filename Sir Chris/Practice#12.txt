@@ -1,0 +1,7 @@
+Write the code for the function insertFirstUnique. The function will receive an array of integers, a pointer to the count (actual number of elements in the array), size, and the value to insert. The function will insert the passed value into the first index of the array, if the value does not yet exist in the array.
+
+Input: A[10] = {1, 2, 3, 4, 6}; Value to Insert: 5
+Output: A[10] = {5, 1, 2, 3, 4, 6};
+
+Input: A[10] = {1, 2, 3, 4, 6}; Value to Insert: 6
+Output: A[10] = {1, 2, 3, 4, 6}

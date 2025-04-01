@@ -1,0 +1,7 @@
+Write the code for the function getSecretMessage(). The function will receive a string, and a character which represents the secret key. This function will extract the secret message by identifying the text in between the two outermost occurrences of the secret key character. Return a new string containing the secret message.
+
+Input: char message[] = "CRIS IS SMART", secret key = 'R'
+Output: secret message = "IS IS SMA"
+
+Input: Input: char message[] = "ONOMATOPOEIA", secret key = 'O'
+Output: secret message = "NOMATOP"

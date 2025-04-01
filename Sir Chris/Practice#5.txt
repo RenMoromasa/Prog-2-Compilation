@@ -1,0 +1,7 @@
+Sharing this problem for those who want to practice:
+
+Write the code for the function extractChars. Function will receive as a parameter a string, and a character to extract. The function will go through each index in the string, and keep note of all the indices where the character is found. Return an array of integers containing all the indices of the found elements. Let the last index of the array of integers hold a -1 for printing.
+
+Example:
+Input String: "APPLICATION", char = A
+Output Array: {0, 6, -1};

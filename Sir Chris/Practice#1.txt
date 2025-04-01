@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+void splitArray(int A[], int B[], int size);
+/* The function will receive as parameters 2 arrays. A will be 
+   the input array, and B will be the output array. 
+   Assume that A and B are of the same size, and that A always holds
+   values from 1-10. The function will go through A, and store
+   each element into B, based on whether or not it is ODD or EVEN.
+   ODD elements will be stored in the first half of B. EVEN elements
+   will be stored in the 2nd half of B.
+*/
+
+int splitArray(int A[], int B[], int sizeA, int sizeB);
+/* The function will receive as parameters 2 arrays of different 
+   sizes. A will be the input array, and B will be the output array. \
+   The function can only continue if the size of A is smaller than
+   or equal to that of B. The function will go through A, and store
+   each element into B, based on whether or not it is ODD or EVEN.
+   ODD elements will be stored in the first half of B. EVEN elements
+   will be stored in the 2nd half of B.
+   
+   If the number of elements in either ODD or EVEN sections exceed
+   their limit, then your function ends.
+   
+   Return 1 if it was successful, and 0 if it failed.
+   
+*/
+
+
+
+void printArr(int arr[], int size)
+{
+    int i;
+    for(i = 0; i < size; i++){
+        printf("%d\n", arr[i]);
+    }
+}
+
+void foo(int arr[], int size, int ndx, int value)
+{
+    if(ndx < size){
+        arr[ndx] = value;
+    }
+}
+
+int main()
+{
+    int A[10] = {1,2,3,4,5,6,7,8,9,10};
+    printArr(&A[4], 6);
+    
+    
+    return 0;
+}

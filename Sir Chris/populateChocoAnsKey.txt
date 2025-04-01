@@ -1,0 +1,20 @@
+void populateChocoList(ChocoList* CL)
+{
+    FILE* fp = fopen("chocoRecords.bin", "rb");
+    Chocolate tempChoco;
+    CLL temp, *trav;
+    
+    if(fp != NULL){
+        while(fread(&tempChoco, sizeof(Chocolate), 1, fp) != 0){
+            temp = malloc(sizeof(ChocoNode));
+            if(temp != NULL){
+                temp->chocoProd = tempChoco;
+                for(trav = &CL->choco; *trav != NULL; trav = &(*trav)->nextChoco){}
+                temp->nextChoco = *trav;
+                *trav = temp;
+                CL->numChoco++;                
+            }
+            //insertLastUnique(CL, tempChoco);
+        }
+    }
+}
