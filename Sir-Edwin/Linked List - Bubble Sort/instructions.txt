@@ -1,0 +1,12 @@
+Implement void bubbleSortLinkedList(Node* head)
+
+Try implementing a counter while traversing the array, or use a boolean variable to check if a swap
+occurs in the loop. The swapped variable helps track whether any swaps occur during a loop iteration. 
+If a swap happens, continue looping; if no swaps occur, the array is already sorted, and 
+you can stop the algorithm.
+
+
+//============================== Sample Output 1 ==============================//
+Original Linked List: 5 -> 1 -> 4 -> 2 -> 8 -> NULL
+Sorted Linked List: 1 -> 2 -> 4 -> 5 -> 8 -> NULL
+//============================== END ==============================//
