@@ -1,3 +1,6 @@
+Linked List - Bubble Sort
+by Edwin Bartlett
+
 Implement void bubbleSortLinkedList(Node* head)
 
 Try implementing a counter while traversing the array, or use a boolean variable to check if a swap
