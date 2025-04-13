@@ -1,0 +1,197 @@
+E-Commerce Order Management System
+by Edwin Bartlett
+
+Description
+This program manages products in a shopping cart and tracks order IDs. It utilizes a linked list to represent the shopping cart and an array list to store order IDs.
+
+Data Structures
+Linked List (Product)
+
+Each node represents a product in the shopping cart.
+Structure:
+name (char[50]): Product name.
+price (float): Product price.
+quantity (int): Product quantity.
+next (pointer to Product): Pointer to the next product in the cart.
+Array List (OrderIDs)
+
+Stores the order IDs.
+Structure:
+orderId (int[100]): Array of order IDs.
+count (int): Number of orders.
+Functions
+createProduct()
+
+Creates a new product node with a name, price, and quantity.
+Allocates memory dynamically for the new node.
+addProductToCart()
+
+Adds a product to the shopping cart (linked list).
+If the cart is empty, the new product becomes the head.
+If the cart is not empty, the new product is added to the end.
+removeProductFromCart()
+
+Removes a product from the shopping cart based on its name.
+If the product is found, the corresponding node is removed, and its memory is freed.
+If the product is not found, a message is displayed.
+displayCart()
+
+Displays the products currently in the shopping cart.
+For each product, it shows the name, quantity, and price.
+Calculates and displays the total price of the products in the cart.
+If the cart is empty, it displays a message indicating that the cart is empty.
+checkout()
+
+Simulates the checkout process.
+Generates a unique order ID (for simplicity, a sequential ID is used).
+Adds the generated order ID to the OrderIDs array list.
+Clears the shopping cart (frees the memory of all product nodes and resets the cart pointer).
+Returns the generated order ID.
+If the cart is empty, it displays an error message and returns -1.
+displayOrderIDs()
+
+Displays all order IDs stored in the OrderIDs array list.
+If there are no orders, it displays a message indicating that no orders have been placed.
+Test Cases
+Empty Cart Checkout - Checks if the program correctly handles an empty cart during checkout.
+Add and Remove Multiple Items - Verifies that adding and removing multiple items from the cart works as expected.
+Checkout with Multiple Items - Ensures that the checkout process works correctly with multiple items in the cart.
+
+//============================== Sample Output 1 ==============================//
+
+Shopping Cart:
+- Laptop (Quantity: 1, Price: 1200.00)
+- Mouse (Quantity: 2, Price: 25.00)
+- Keyboard (Quantity: 1, Price: 75.00)
+Total: 1325.00
+Product 'Mouse' removed from cart.
+
+Shopping Cart:
+- Laptop (Quantity: 1, Price: 1200.00)
+- Keyboard (Quantity: 1, Price: 75.00)
+Total: 1275.00
+Checkout successful! Your Order ID is: 1001
+Order placed successfully. Order ID: 1001
+
+Shopping Cart:
+Your cart is empty.
+Checkout successful! Your Order ID is: 1002
+Order placed successfully. Order ID: 1002
+
+Order IDs:
+- 1001
+- 1002
+
+Select a Test Case:
+1. Empty Cart Checkout
+2. Add and Remove Multiple Items
+3. Checkout with Multiple Items
+0. Exit
+Enter your choice: 1
+
+Running Test Case 1: Empty Cart Checkout
+Cannot checkout. Your cart is empty.
+  PASS: Checkout on empty cart returns -1
+
+Shopping Cart:
+Your cart is empty.
+
+Order IDs:
+No orders yet.
+//============================== END ==============================//
+
+//============================== Sample Output 2 ==============================//
+
+Shopping Cart:
+- Laptop (Quantity: 1, Price: 1200.00)
+- Mouse (Quantity: 2, Price: 25.00)
+- Keyboard (Quantity: 1, Price: 75.00)
+Total: 1325.00
+Product 'Mouse' removed from cart.
+
+Shopping Cart:
+- Laptop (Quantity: 1, Price: 1200.00)
+- Keyboard (Quantity: 1, Price: 75.00)
+Total: 1275.00
+Checkout successful! Your Order ID is: 1001
+Order placed successfully. Order ID: 1001
+
+Shopping Cart:
+Your cart is empty.
+Checkout successful! Your Order ID is: 1002
+Order placed successfully. Order ID: 1002
+
+Order IDs:
+- 1001
+- 1002
+
+Select a Test Case:
+1. Empty Cart Checkout
+2. Add and Remove Multiple Items
+3. Checkout with Multiple Items
+0. Exit
+Enter your choice: 2
+
+Running Test Case 2: Add and Remove Multiple Items
+
+Shopping Cart:
+- Item1 (Quantity: 3, Price: 10.00)
+- Item2 (Quantity: 1, Price: 20.00)
+- Item3 (Quantity: 5, Price: 5.00)
+Total: 75.00
+Product 'Item2' removed from cart.
+
+Shopping Cart:
+- Item1 (Quantity: 3, Price: 10.00)
+- Item3 (Quantity: 5, Price: 5.00)
+Total: 55.00
+Product 'NonExistentItem' not found in cart.
+
+Shopping Cart:
+- Item1 (Quantity: 3, Price: 10.00)
+- Item3 (Quantity: 5, Price: 5.00)
+Total: 55.00
+//============================== END ==============================//
+
+//============================== Sample Output 3 ==============================//
+
+Shopping Cart:
+- Laptop (Quantity: 1, Price: 1200.00)
+- Mouse (Quantity: 2, Price: 25.00)
+- Keyboard (Quantity: 1, Price: 75.00)
+Total: 1325.00
+Product 'Mouse' removed from cart.
+
+Shopping Cart:
+- Laptop (Quantity: 1, Price: 1200.00)
+- Keyboard (Quantity: 1, Price: 75.00)
+Total: 1275.00
+Checkout successful! Your Order ID is: 1001
+Order placed successfully. Order ID: 1001
+
+Shopping Cart:
+Your cart is empty.
+Checkout successful! Your Order ID is: 1002
+Order placed successfully. Order ID: 1002
+
+Order IDs:
+- 1001
+- 1002
+
+Select a Test Case:
+1. Empty Cart Checkout
+2. Add and Remove Multiple Items
+3. Checkout with Multiple Items
+0. Exit
+Enter your choice: 3
+
+Running Test Case 3: Checkout with Multiple Items
+Checkout successful! Your Order ID is: 1001
+  PASS: Checkout successful, Order ID: 1001
+
+Shopping Cart:
+Your cart is empty.
+
+Order IDs:
+- 1001
+//============================== END ==============================//
