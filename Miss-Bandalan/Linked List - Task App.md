@@ -1,6 +1,9 @@
 # Linked List - Task App  
 **by Edwin Bartlett**  
 
-![Screenshot](Miss-Bandalan/Images/Task App Image.png)
+![Task App Description](Images/TaskAppImage.png)
 
-![Screenshot](Miss-Bandalan/Images/Sample Output 1 Task App.png)
+![Sample Output1](Images/SampleOutput1.png)\
+
+![Sample Output2](Images/SampleOutput2.png)
+![Sample Output2 Continuation](Images/SampleOutput2Cont.png)
