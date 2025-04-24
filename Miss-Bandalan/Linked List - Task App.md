@@ -1,7 +1,7 @@
-2025-04-24-20-11-06.png
+# Linked List - Task App  
+**by Edwin Bartlett**  
 
-Linked List - Task App
-by Edwin Bartlett
+![Screenshot](2025-04-24-20-11-06.png)  
 
 Task* createTask(const char* description, int priority):
 
