@@ -1,185 +1,120 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
-typedef struct Node {
-    int data;
-    struct Node* next; //Pointer to the next node
-} Node;
-
+// ARRAY LIST V1
+// Structure Definition
+#define MAX 100
 typedef struct {
-    Node* head; // Pointer to first node
-    int size;
+    char elems[MAX];
+    int count;
 } List;
 
-List* InitList();
-Node* CreateNode();
-void InsertFront(List* list, int value);
-void InsertEnd(List* list, int value);
-void InsertAt(List* list, int value, int pos);
-void DeleteFront(List* list);
-void DeleteEnd(List* list);
-void DeleteAt(List* list, int pos);
-
-// Creating a new Node
-Node* CreateNode (int value){
-    Node* newNode = (Node*)malloc(sizeof(Node));
-        if(newNode == NULL){
-            printf("Memory Allocation Failed.");
-            return NULL;
-        } 
-        
-        newNode->data = value;
-        newNode->next = NULL;
-        return newNode;
+// Initialize List
+void initList (List *L){
+    L->count = 0;
 }
 
-// Initialize an empty InitList
-List* InitList(){
-    List* newList = (List*)malloc(sizeof(List));
-    if(newList == NULL) {
-        printf("Memory Allocation Failed.");
-        return NULL;
+// Helper Functions
+int isFull(List *L) { 
+    return L->count == MAX; 
+}
+int isEmpty(List *L) { 
+    return L->count == 0; 
+}
+
+// Insert Front
+void insertFront (List *L, char val){
+    if(L->count == MAX) return;
+
+    for(int i = L->count; i > 0; i--){
+        L->elems[i] = L->elems[i - 1];
     }
-    newList->head = NULL;
-    newList->size = 0;
-    return newList;
+
+    L->elems[0] = val;
+    L->count++;
 }
 
-void InsertFront(List* list, int value){
-    Node* newNode = CreateNode(value);
-    newNode->next = list->head;
-    list->head = newNode;
-    list->size++;
+// insert Last
+void insertLast (List *L, char val){
+    if(L->count < MAX){
+        L->elems[L->count] = val;
+        L->count++;
+    }
 }
 
-void InsertEnd(List* list, int value){
-    Node* newNode = CreateNode(value);
-    
-    if(list->head == NULL){
-        list->head = newNode;
-    } else {
-        Node* current = list->head;
-        while(current->next != NULL){
-            current = current->next;
+// Insert At Position
+void insertAt (List *L, char val, int pos){
+    if(pos < 0 || pos > L->count || L->count == MAX){
+        return;
+    }
+
+    for(int i = L->count; i > pos; i--){
+        L->elems[i] = L->elems[i - 1];
+    }
+
+    L->elems[pos] = val;
+    L->count++;
+}
+
+// Insert Sorted
+void insertSorted (List *L, char val){
+    if(L->count >= MAX) return;
+
+    int i = L->count;
+
+    while(i > 0 && L->elems[i - 1] > val){
+        L->elems[i] = L->elems[i - 1];
+        i--;
+    }
+
+    L->elems[i] = val;
+    L->count++;
+}
+
+// Delete First
+void deleteFirst (List* L){
+    if(L->count == 0) return;
+
+    if(L->count > 0){
+        for(int i = 0; i < L->count - 1; i++){
+            L->elems[i] = L->elems[i + 1];
         }
-        current->next = newNode;
+        L->count--;
     }
-    list->size++;
-}
-void InsertAt(List* list, int value, int pos){
-    if(pos < 0 || pos > list->size){
-        printf("Invalid Position");
-        return;
-    }
-    
-    if(pos == 0){
-        InsertFront(list, value);
-        return;
-    }
-    
-    Node* newNode = CreateNode(value);
-    
-    Node* current = list->head;
-    for(int i = 0; i < pos - 1; i++){
-        current = current->next;
-    }
-    
-    newNode->next = current->next;
-    current->next = newNode;
-    list->size++;
 }
 
-void DeleteFront(List* list){
-    if(list->head == NULL){
-        printf("List is empty.");
-        return;
+// Delete Last
+void deleteLast (List* L){
+    if(L->count != 0){
+        L->count--;
     }
-    
-    Node *temp = list->head;
-    list->head = temp->next;
-    free(temp);
-    list->size++;
 }
 
-void DeleteEnd (List* list){
-    if(list->head == NULL){
-        printf("List is empty");
-        return;
-    }
-    
-    if(list->head->next == NULL){
-        free(list->head);
-        list->head = NULL;
-    } else {
-        Node* current = list->head;
-        while(current->next->next != NULL){
-            current = current->next;
+// Delete At Position
+void deleteAt(List* L, int pos){
+    if(pos >= 0 && pos < L->count){
+        for(int i = pos; i < L->count - 1; i++){
+            L->elems[i] = L->elems[i + 1];
         }
-        free(current->next);
-        current->next = NULL;
+        L->count--;
+    }
+}
+
+// Display
+void displayList (List L){
+    for(int i = 0; i < L.count; i++){
+        printf(" %c", L.elems[i]);
+    }
+}
+
+// Search
+int search (List L, char val){
+    for(int i = 0; i < L.count; i++){
+        if(L.elems[i] == val){
+            return i;
         }
-    list->size--;
-}
-
-void DeleteAt(List* list, int pos){
-    if(pos < 0 || pos >= list->size){
-        printf("Invalid Position");
-        return;
     }
-    
-    if(pos == 0){
-        DeleteFront(list);
-    }
-    
-    Node* current = list->head;
-    for(int i = 0; i < pos - 1; i++){
-        current = current->next;
-    }
-    
-    Node* temp = current->next;
-    current->next = temp->next;
-    free(temp);
-    list->size--;
-    
-}
-
-
-
-void displayList(List* list){
-    Node* current = list->head;
-    printf("List: ");
-    while(current != NULL){
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
-}
-
-void FreeNode(Node* node){
-    free(node);
-}
-
-void FreeList(List* list){
-    Node* current = list->head;
-    while(current != NULL){
-        Node* temp = current;
-        current = current->next;
-        free(temp);
-    }
-    free(list);
-}
-
-int main (){
-    List* myList = InitList();
-    
-    InsertEnd(myList, 10);
-    InsertFront(myList, 2);
-    InsertAt(myList, 7, 1);
-    DeleteFront(myList);
-    
-    displayList(myList);
-    FreeList(myList);
-    
-    return 0;
+    return -1;
 }
