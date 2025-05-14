@@ -36,7 +36,7 @@ void insertFront (List *L, char val){
     L->count++;
 }
 
-// insert Last
+// Insert Last
 void insertLast (List *L, char val){
     if(L->count < MAX){
         L->elems[L->count] = val;
