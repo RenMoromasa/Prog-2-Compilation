@@ -12,6 +12,7 @@ typedef struct {
     int size;
 } List;
 
+// Function Prototypes
 List* InitList();
 Node* CreateNode();
 void InsertFront(List* list, int value);
@@ -34,7 +35,7 @@ Node* CreateNode (int value){
         return newNode;
 }
 
-// Initialize an empty InitList
+// Initialize a List
 List* InitList(){
     List* newList = (List*)malloc(sizeof(List));
     if(newList == NULL) {
@@ -46,6 +47,7 @@ List* InitList(){
     return newList;
 }
 
+// Inserting at Front
 void InsertFront(List* list, int value){
     Node* newNode = CreateNode(value);
     newNode->next = list->head;
@@ -53,6 +55,7 @@ void InsertFront(List* list, int value){
     list->size++;
 }
 
+// Inserting at End
 void InsertEnd(List* list, int value){
     Node* newNode = CreateNode(value);
     
@@ -67,6 +70,8 @@ void InsertEnd(List* list, int value){
     }
     list->size++;
 }
+
+// Inserting at Position
 void InsertAt(List* list, int value, int pos){
     if(pos < 0 || pos > list->size){
         printf("Invalid Position");
@@ -90,6 +95,7 @@ void InsertAt(List* list, int value, int pos){
     list->size++;
 }
 
+// Deleting at Front
 void DeleteFront(List* list){
     if(list->head == NULL){
         printf("List is empty.");
@@ -102,6 +108,7 @@ void DeleteFront(List* list){
     list->size++;
 }
 
+// Deleting at End
 void DeleteEnd (List* list){
     if(list->head == NULL){
         printf("List is empty");
@@ -122,6 +129,7 @@ void DeleteEnd (List* list){
     list->size--;
 }
 
+// Deleting At Position
 void DeleteAt(List* list, int pos){
     if(pos < 0 || pos >= list->size){
         printf("Invalid Position");
@@ -144,8 +152,7 @@ void DeleteAt(List* list, int pos){
     
 }
 
-
-
+// Display the List
 void displayList(List* list){
     Node* current = list->head;
     printf("List: ");
@@ -156,10 +163,12 @@ void displayList(List* list){
     printf("\n");
 }
 
+// Freeing Node
 void FreeNode(Node* node){
     free(node);
 }
 
+// Freeing List
 void FreeList(List* list){
     Node* current = list->head;
     while(current != NULL){

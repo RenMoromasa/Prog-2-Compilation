@@ -11,6 +11,29 @@ typedef struct {
     int count;
 } List;
 
+// Function Prototypes
+// Initialization
+void initList(List *L);
+
+// Helper Functions
+int isFull(List *L);
+int isEmpty(List *L);
+
+// Insertion Operations
+void insertFront(List *L, char val);
+void insertLast(List *L, char val);
+void insertAt(List *L, char val, int pos);
+void insertSorted(List *L, char val);
+
+// Deletion Operations
+void deleteFirst(List *L);
+void deleteLast(List *L);
+void deleteAt(List *L, int pos);
+
+// Utility Functions
+void displayList(List L);
+int search(List L, char val);
+
 // Initialize List
 void initList (List *L){
     L->count = 0;
