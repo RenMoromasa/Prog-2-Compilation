@@ -19,6 +19,18 @@ void initList (ListPtr* L){
    }
 }
 
+// Function Prototypes
+void initList(ListPtr* L);
+void insertFront(ListPtr* L, char val);
+void insertRear(ListPtr* L, char val);
+void insertAt(ListPtr* L, char val, int pos);
+void insertSorted(ListPtr* L, char val, int pos);
+void deleteFront(ListPtr* L);
+void deleteLast(ListPtr* L);
+void deleteAt(ListPtr* L, int pos);
+void displayList(ListPtr L);
+int search(ListPtr L, char val);
+
 // Insert First
 void insertFront (ListPtr* L, char val){
     if((*L)->count < MAX){
