@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define MAX 100
 // ARRAY LIST V2
 // Structure Definition
 #define MAX 100
@@ -12,12 +11,6 @@ typedef struct {
     int count;
 } *ListPtr;
 
-// Initialize List
-void initList (ListPtr* L){
-   if(*L != NULL){
-     (*L)->count = 0;
-   }
-}
 
 // Function Prototypes
 void initList(ListPtr* L);
@@ -30,6 +23,13 @@ void deleteLast(ListPtr* L);
 void deleteAt(ListPtr* L, int pos);
 void displayList(ListPtr L);
 int search(ListPtr L, char val);
+
+// Initialize List
+void initList (ListPtr* L){
+   if(*L != NULL){
+     (*L)->count = 0;
+   }
+}
 
 // Insert First
 void insertFront (ListPtr* L, char val){
