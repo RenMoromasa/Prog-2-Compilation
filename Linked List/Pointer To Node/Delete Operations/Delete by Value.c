@@ -23,7 +23,10 @@ Node* insertFirst(Node* head, int data) {
 
 // Delete By Value
 Node* deletebyValue(Node* head, int value){
-    
+    if (head == NULL){
+        return NULL;
+    }
+
     if (head->data == value) {
         Node* temp = head;      
         head = head->next;
@@ -36,6 +39,12 @@ Node* deletebyValue(Node* head, int value){
         current = current->next;
     }
 
+    if (current->next == NULL) {
+        // Value not found in list
+        printf("Value %d not found in the list.\n", value);
+        return head;
+    }
+    
     Node* temp = current->next;
     current->next = current->next->next;
     free(temp);
