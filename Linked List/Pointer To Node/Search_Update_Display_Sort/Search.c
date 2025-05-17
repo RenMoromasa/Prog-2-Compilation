@@ -22,6 +22,16 @@ Node* insertFirst(Node* head, int data) {
 }
 
 // Search 
+Node* search(Node* head, int value){
+    while(head){
+        if(head->data == value){
+            return head;
+        }
+        head = head->next;
+    }
+    return NULL;
+}
+
 // Display List
 void displayList(Node* head) {
     Node* current = head;
@@ -39,6 +49,13 @@ int main() {
     head = insertFirst(head, 8);
     head = insertFirst(head, 9);
     head = insertFirst(head, 10);
+    
+    Node* found = search(head, 9);
+    if (found) {
+        printf("Value %d found in the list.\n", found->data);
+    } else {
+        printf("Value not found in the list.\n");
+    }
 
     displayList(head);
 
