@@ -87,7 +87,7 @@ void deleteAt (List *L, int pos){
 }
 
 // Display List
-void displayList (ListPtr L){
+void displayList (List L){
     printf("List: ");
     for(int i = 0; i < L->count; i++){
         printf(" %c", L->elems[i]);
@@ -95,7 +95,7 @@ void displayList (ListPtr L){
 }
 
 // Search for Value
-int search(ListPtr L, char val){
+int search(List L, char val){
     for(int i = 0; i < L->count; i++){
         if(L->elems[i] == val){
             return i;
