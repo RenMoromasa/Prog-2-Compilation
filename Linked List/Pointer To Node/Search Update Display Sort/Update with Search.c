@@ -21,32 +21,38 @@ Node* insertFirst(Node* head, int data) {
     return newNode;
 }
 
-// Swap
-void swap (Node* a, Node* b){
-    Node* temp = a->data;
-    a->data = b->data;
-    b->data = temp;
+// Search 
+Node* search(Node* head, int value){
+    while(head){
+        if(head->data == value){
+            return head;
+        }
+        head = head->next;
+    }
+    return NULL;
 }
 
-// Sort List in Ascending Order
-Node* sortList(Node* head) {
-    if (!head || !head->next){
-        return head;
-    }
-
-    Node* i;
-    Node* j;
-    int temp;
-
-    for (i = head; i != NULL; i = i->next) {
-        for (j = i->next; j != NULL; j = j->next) {
-            if (i->data > j->data) {
-                swap(i, j);
-            }
-        }
+// Update
+Node* updateList (Node* head, int oldValue, int newValue){
+    Node* node = search(head, oldValue);
+    if(node){
+        node->data = newValue;
     }
     return head;
 }
+
+/* Update all occurrences
+Node* updateList(Node* head, int oldValue, int newValue) {
+    Node* current = head;
+    while (current != NULL) {
+        if (current->data == oldValue) {
+            current->data = newValue;
+        }
+        current = current->next;
+    }
+    return head;
+}
+*/
 
 // Display List
 void displayList(Node* head) {
@@ -62,16 +68,14 @@ int main() {
     Node* head = NULL;
 
     head = insertFirst(head, 7);
-    head = insertFirst(head, 3);
+    head = insertFirst(head, 8);
     head = insertFirst(head, 9);
-    head = insertFirst(head, 1);
-
-    printf("Before sorting:\n");
+    head = insertFirst(head, 10);
+    
     displayList(head);
 
-    head = sortList(head);
-
-    printf("After sorting:\n");
+    head = updateList(head, 9, 99);  // Update value
+    printf("After update:\n");
     displayList(head);
 
     return 0;

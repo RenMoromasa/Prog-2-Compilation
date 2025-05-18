@@ -1,58 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node{
+typedef struct Node {
     int data;
     struct Node* next;
-} Node;
+} Node, *NodePtr;
 
 // Create Node
-Node* createNode(int data){
+Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
-
     newNode->data = data;
     newNode->next = NULL;
-
     return newNode;
 }
 
-// Insert At
-Node* insertAt (Node* head, int data, int pos){
+// insert At Position
+void insertAt(NodePtr* head, int data, int pos) {
     Node* newNode = createNode(data);
-    
+
     if(pos == 0){
-        newNode->next = head;
-        return newNode;
+        newNode->next = *head;
+        *head = newNode;
+        return;
     }
 
-    Node* current = head;
+    Node* current = *head;
     for(int i = 0; i < pos - 1 && current != NULL; i++){
         current = current->next;
     }
-
     newNode->next = current->next;
     current->next = newNode;
-
-    return head;
 }
 
 // Display List
-void displayList(Node* head){
+void displayList(Node* head) {
     Node* current = head;
-    while(current != NULL){
+    while (current != NULL) {
         printf("%d -> ", current->data);
         current = current->next;
     }
     printf("NULL\n");
 }
 
-int main ( ){
+int main() {
     Node* head = NULL;
 
-    head = insertAt(head, 10, 0);
-    head = insertAt(head, 8, 1);
-    head = insertAt(head, 9, 2);
-    head = insertAt(head, 7, 3);
+    insertAt(&head, 7, 0);  // head = 7
+    insertAt(&head, 8, 1);  // 7 -> 8
+    insertAt(&head, 9, 1);  // 7 -> 9 -> 8
+    insertAt(&head, 10, 2); // 7 -> 9 -> 10 -> 8
 
     displayList(head);
 
