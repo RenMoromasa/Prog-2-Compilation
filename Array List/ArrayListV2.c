@@ -51,17 +51,27 @@ void insertRear (ListPtr* L, char val){
 // Insert At Position
 void insertAt (ListPtr* L, char val, int pos){
     if((*L)->count < MAX && pos >= 0 && pos <= ((*L)->count)){
-        for(int i = (*L)->count; i > pos; i--){
+        for(int i = (*L)->count++; i > pos; i--){
             (*L)->elems[i] = (*L)->elems[i - 1];
         }
         (*L)->elems[pos] = val;
-        (*L)->count++;
     }
 }
 
 // Insert Sorted
 void insertSorted (ListPtr* L, char val, int pos){
+    if((*L)->count >= MAX){
+        return;
+    }
 
+    int i;
+
+    if((*L)->count < MAX){
+        for(i = (*L)->count++; i > 0 && (*L)->elems[i] > val; i--){
+            (*L)->elems[i + 1] = (*L)->elems[i];
+        }
+        (*L)->elems[i] = val;
+    }
 }
 
 // Delete First
