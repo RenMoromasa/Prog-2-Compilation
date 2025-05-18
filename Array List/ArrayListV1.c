@@ -49,21 +49,22 @@ int isEmpty(List *L) {
 
 // Insert Front
 void insertFront (List *L, char val){
-    if(L->count == MAX) return;
-
-    for(int i = L->count; i > 0; i--){
+    if(L->count == MAX){
+        return;
+    }
+    
+    if(L->count < MAX){
+    for(int i = L->count++; i > 0; i--){
         L->elems[i] = L->elems[i - 1];
     }
-
     L->elems[0] = val;
-    L->count++;
+    }
 }
 
 // Insert Last
 void insertLast (List *L, char val){
     if(L->count < MAX){
-        L->elems[L->count] = val;
-        L->count++;
+        L->elems[L->count++] = val;
     }
 }
 
@@ -83,17 +84,18 @@ void insertAt (List *L, char val, int pos){
 
 // Insert Sorted
 void insertSorted (List *L, char val){
-    if(L->count >= MAX) return;
-
-    int i = L->count;
-
-    while(i > 0 && L->elems[i - 1] > val){
-        L->elems[i] = L->elems[i - 1];
-        i--;
+    if(L->count >= MAX){
+        return;
     }
 
-    L->elems[i] = val;
-    L->count++;
+    int i;
+
+    if(L->count < MAX){
+        for(i = L->count++; i > 0 && L->elems[i] > val; i--){
+            L->elems[i + 1] = L->elems[i];
+        }
+        L->elems[i] = val;
+    }
 }
 
 // Delete First
